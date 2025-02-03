@@ -65,3 +65,15 @@ Project: Affiliate Marketing html
 	};
 	AffiliateMarketing.init();
   })(jQuery);
+
+function hidePreloader() {
+    let preloader = document.getElementById("preloader");
+    let content = document.getElementById("content");
+
+    setTimeout(() => {
+        preloader.style.display = "none";  
+        content.style.display = "block";   
+    }, 3000);  
+}
+
+window.onload = hidePreloader;
