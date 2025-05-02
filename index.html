@@ -86,6 +86,51 @@
       class=""
       style=""
     />
+    <style>
+    /* Card hover effect */
+.sm_section2_item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Initial hidden state */
+.card-animate {
+  opacity: 0;
+  transform: translateX(0);
+  transition: all 1s ease;
+}
+
+/* Left slide-in */
+.slide-in-left {
+  transform: translateX(-50px);
+}
+
+/* Right slide-in */
+.slide-in-right {
+  transform: translateX(50px);
+}
+
+/* Visible state */
+.card-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Stack cards vertically on small screens */
+@media (max-width: 768px) {
+  .sm_section2_flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sm_section2_item {
+    width: 100%;
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+}
+
+</style>
   </head>
   <body>
     <div id="preloader">
@@ -396,6 +441,87 @@
     <div class="sm_section2_wr mt_bgtempconatainer sm_section" id="about">
       <div class="sm_container">
         <div class="sm_section_heading">
+          <h5 class="sm_subheading editableElement" style="color: rgb(25, 194, 237); background-color: rgba(0, 0, 0, 0)">
+            Buy Cheaper
+          </h5>
+          <h3 class="sm_heading editableElement" style="font-weight: 700; color: rgb(7, 11, 59); background-color: rgba(0, 0, 0, 0)">
+            Affordable Data Plans
+          </h3>
+          <p class="sm_paragraph editableElement" style="color: rgb(95, 108, 145); background-color: rgba(0, 0, 0, 0)">
+            Zeebills helps you make payments for services you enjoy right from the comfort of your home or office.
+            The experience of total convenience, fast service delivery and easy payment is just at your fingertips.
+          </p>
+        </div>
+    
+        <div class="sm_section2_flex">
+          <!-- Card 1 - MTN -->
+          <div class="sm_section2_item mt_bgtempconatainer card-animate slide-in-left">
+            <div class="section_media">
+              <img src="assets/images/97bd44e435_19.png" alt="banner" class="editableElement" />
+            </div>
+            <h3 class="editableElement" style="color: rgb(49, 36, 91)">MTN Data Plan</h3>
+            <p class="editableElement" style="color: rgb(95, 108, 145)">
+              500MB 30 Days - ₦130<br />
+              1GB 30 Days - ₦260<br />
+              2GB 30 Days - ₦520<br />
+              ..more
+            </p>
+          </div>
+    
+          <!-- Card 2 - Airtel -->
+          <div class="sm_section2_item mt_bgtempconatainer card-animate slide-in-left">
+            <div class="section_media">
+              <img src="assets/images/46f54d9a06_19.png" alt="banner" class="editableElement" />
+            </div>
+            <h3 class="editableElement" style="color: rgb(49, 36, 91)">Airtel Data Plan</h3>
+            <p class="editableElement" style="color: rgb(95, 108, 145)">
+              500MB 30 Days - ₦138<br />
+              1GB 30 Days - ₦270<br />
+              2GB 30 Days - ₦530<br />
+              ..more
+            </p>
+          </div>
+    
+          <!-- Card 3 - Glo -->
+          <div class="sm_section2_item mt_bgtempconatainer card-animate slide-in-right">
+            <div class="section_media">
+              <img src="assets/images/80461ef14e_19.png" alt="banner" class="editableElement" />
+            </div>
+            <h3 class="editableElement" style="color: rgb(49, 36, 91)">Glo Data Plan</h3>
+            <p class="editableElement" style="color: rgb(95, 108, 145)">
+              500MB 30 Days - ₦100<br />
+              1GB 30 Days - ₦2210<br />
+              2GB 30 Days - ₦430<br />
+              ..more
+            </p>
+          </div>
+    
+          <!-- Card 4 - 9Mobile -->
+          <div class="sm_section2_item mt_bgtempconatainer card-animate slide-in-right">
+            <div class="section_media">
+              <img src="assets/images/92432aaaea_19.png" alt="banner" class="editableElement" />
+            </div>
+            <h3 class="editableElement" style="color: rgb(49, 36, 91)">9MOBILE Data Plan</h3>
+            <p class="editableElement" style="color: rgb(95, 108, 145)">
+              500MB 30 Days - ₦100<br />
+              1GB 30 Days - ₦2210<br />
+              2GB 30 Days - ₦430<br />
+              ..more
+            </p>
+          </div>
+        </div>
+    
+        <div class="sm_section_btn">
+          <a href="#" class="editableElement sm_btn" style="color: #fff; background-color: rgb(25,194,237)">
+            Purchase New Service
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- <div class="sm_section2_wr mt_bgtempconatainer sm_section" id="about">
+      <div class="sm_container">
+        <div class="sm_section_heading">
           <h5
             class="sm_subheading editableElement"
             data-kindoff="text"
@@ -667,7 +793,7 @@
           >
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="sm_section3_wr mt_bgtempconatainer sm_section" id="service">
       <div class="sm_container">
         <div class="sm_section3_flex">
@@ -1900,6 +2026,17 @@ function updateCarouselContent() {
 
 // Set up 3-second rotation interval
 setInterval(updateCarouselContent, 3000);
+// Wait for page to load
+window.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".card-animate");
+
+  setTimeout(() => {
+    cards.forEach((card, index) => {
+      // Add visible class after delay
+      card.classList.add("card-visible");
+    });
+  }, 5000); // 5 seconds delay
+});
 </script>
 
   </body>
