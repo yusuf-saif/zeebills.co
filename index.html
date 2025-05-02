@@ -1847,5 +1847,60 @@
       class=""
       style=""
     ></script>
+    <script>
+// --------------------------
+// Zeebills Dynamic Banner Carousel
+// --------------------------
+
+// Array of rotating text content
+const headlines = [
+  "Instant Recharge on Zeebills",
+  "Refill On The Go with Zeebills",
+  "Excess Airtime? No Problem",
+  "Streamline your payments, anytime, anywhere."
+];
+
+// Array of rotating image paths (make sure these files exist)
+const images = [
+  "assets/images/zeebills-bg-.png",
+  "assets/images/z2.png",
+  "assets/images/z3.png",
+  "assets/images/z1.png"
+];
+
+// Target headline and image elements by existing IDs
+const headlineElement = document.getElementById("7a9LBoQGU1wG7KA1");
+const imageElement = document.getElementById("XwzzOaaWFuAnJtet");
+
+let currentIndex = 0;
+
+// Optional: add fade transition via inline style
+headlineElement.style.transition = "opacity 0.5s ease-in-out";
+imageElement.style.transition = "opacity 0.5s ease-in-out";
+
+// Function to rotate headline + image in sync
+function updateCarouselContent() {
+  // Fade out
+  headlineElement.style.opacity = 0;
+  imageElement.style.opacity = 0;
+
+  // Wait a bit before changing content
+  setTimeout(() => {
+    currentIndex = (currentIndex + 1) % headlines.length;
+
+    // Update content
+    headlineElement.textContent = headlines[currentIndex];
+    imageElement.src = images[currentIndex];
+
+    // Fade in
+    headlineElement.style.opacity = 1;
+    imageElement.style.opacity = 1;
+  }, 500);
+}
+
+// Set up 3-second rotation interval
+setInterval(updateCarouselContent, 3000);
+</script>
+
   </body>
 </html>
